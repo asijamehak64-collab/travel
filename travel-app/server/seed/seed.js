@@ -4,40 +4,61 @@ const Place = require("../models/Place");
 
 const places = [
   {
-    name: "Santorini, Greece",
-    image: "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=1200",
-    description: "Whitewashed cliffside villages overlooking the Aegean Sea.",
+    name: "Goa, India",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200",
+    description: "Sunny beaches, nightlife, and Portuguese heritage.",
+    price: 800,
+  },
+  {
+    name: "Manali, Himachal Pradesh",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/0/03/Manali_City.jpg",
+    description: "Snowy mountains, adventure sports, and scenic valleys.",
+    price: 950,
+  },
+  {
+    name: "Jaipur, Rajasthan",
+    image:
+      "https://s7ap1.scene7.com/is/image/incredibleindia/hawa-mahal-jaipur-rajasthan-city-1-hero?qlt=82&ts=1742200253577",
+    description: "Royal palaces, forts, and vibrant culture of the Pink City.",
+    price: 700,
+  },
+  {
+    name: "Kerala Backwaters, Kerala",
+    image:
+      "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=1200",
+    description: "Peaceful houseboats, lush greenery, and serene waterways.",
+    price: 850,
+  },
+  {
+    name: "Leh-Ladakh, Jammu & Kashmir",
+    image:
+      "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2d/51/22/a3/caption.jpg?w=600&h=400&s=1",
+    description:
+      "High-altitude desert, monasteries, and breathtaking landscapes.",
     price: 1200,
   },
   {
-    name: "Kyoto, Japan",
-    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1200",
-    description: "Ancient temples, bamboo forests and traditional tea houses.",
-    price: 1500,
+    name: "Udaipur, Rajasthan",
+    image:
+      "https://s7ap1.scene7.com/is/image/incredibleindia/2-kumbhalgarh-fort-udaipur-rajasthan-attr-hero?qlt=82&ts=1742175707597",
+    description: "Romantic lakes, palaces, and rich royal history.",
+    price: 750,
   },
   {
-    name: "Banff, Canada",
-    image: "https://images.unsplash.com/photo-1609825488888-3a766db05542?w=1200",
-    description: "Turquoise lakes and snow-capped Rocky Mountain peaks.",
-    price: 1100,
+    name: "Andaman Islands, India",
+    image:
+      "https://images.unsplash.com/photo-1586500036706-41963de24d8b?w=1200",
+    description: "Crystal-clear waters, coral reefs, and white sandy beaches.",
+    price: 1400,
   },
   {
-    name: "Bali, Indonesia",
-    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=1200",
-    description: "Tropical beaches, rice terraces and vibrant culture.",
-    price: 900,
-  },
-  {
-    name: "Paris, France",
-    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1200",
-    description: "The city of lights, art, fashion and the Eiffel Tower.",
-    price: 1300,
-  },
-  {
-    name: "Cape Town, South Africa",
-    image: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?w=1200",
-    description: "Table Mountain views, beaches and world-class wine country.",
-    price: 1050,
+    name: "Rishikesh, Uttarakhand",
+    image:
+      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?w=1200",
+    description: "Yoga capital, river rafting, and spiritual vibes.",
+    price: 600,
   },
 ];
 
