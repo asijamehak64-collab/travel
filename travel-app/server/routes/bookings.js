@@ -1,6 +1,7 @@
 const express = require("express");
 const Booking = require("../models/Booking");
 const { auth, adminOnly } = require("../middleware/auth");
+const sendNotificationEmail = require("../services/mailSender");
 
 const router = express.Router();
 
@@ -8,6 +9,7 @@ const router = express.Router();
 router.post("/", auth, async (req, res) => {
   try {
     const { placeId, date } = req.body;
+
     if (!placeId || !date)
       return res.status(400).json({ message: "placeId and date are required" });
 
@@ -16,6 +18,7 @@ router.post("/", auth, async (req, res) => {
       placeId,
       date,
     });
+
     res.json(booking);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -29,6 +32,7 @@ router.get("/", auth, adminOnly, async (_req, res) => {
       .populate("userId", "name email")
       .populate("placeId", "name price")
       .sort({ createdAt: -1 });
+
     res.json(bookings);
   } catch (err) {
     res.status(500).json({ message: err.message });
@@ -41,14 +45,27 @@ router.put("/:id", auth, adminOnly, async (req, res) => {
     const { status } = req.body;
     if (!["pending", "approved", "rejected"].includes(status))
       return res.status(400).json({ message: "Invalid status" });
+    console.log("Updating booking ID:", req.params.id, "to status:", status);
 
     const updated = await Booking.findByIdAndUpdate(
       req.params.id,
       { status },
-      { new: true }
-    );
+      { new: true },
+    )
+      .populate("placeId", "name price")
+      .populate("userId", "name email");
+
+    await sendNotificationEmail({
+      email: updated.userId.email,
+      name: updated.userId.name,
+      status: updated.status,
+      placeName: updated.placeId.name,
+      bookingDate: updated.date,
+      bookingId: updated._id,
+    });
     res.json(updated);
   } catch (err) {
+    console.error("Error mail updating booking:", err);
     res.status(500).json({ message: err.message });
   }
 });
